@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Bitaxe Vendor",
+  "type": "object",
+  "required": ["name", "slug", "website", "region", "country", "logo", "active"],
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 80,
+      "description": "Public display name of the vendor"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-safe identifier, must match filename (e.g. 'pivotal-mining')"
+    },
+    "website": {
+      "type": "string",
+      "format": "uri",
+      "description": "Full URL of the vendor's website"
+    },
+    "region": {
+      "type": "string",
+      "enum": [
+        "North America",
+        "South America",
+        "Europe",
+        "Asia Pacific",
+        "Middle East & Africa"
+      ],
+      "description": "Geographic region for filtering on the Bitaxe website"
+    },
+    "country": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 60,
+      "description": "Country name (e.g. 'USA', 'Germany', 'Australia')"
+    },
+    "logo": {
+      "type": "string",
+      "pattern": "^logos/[a-z0-9-]+\\.(png|jpg|jpeg|webp|svg)$",
+      "description": "Path to logo file relative to repo root (e.g. 'logos/pivotal-mining.png')"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 300,
+      "description": "Optional short description (max 300 chars)"
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Set to false to hide the vendor without deleting the file"
+    },
+    "social": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "x": {
+          "description": "Full URL to X (Twitter) profile, or empty string to omit",
+          "oneOf": [
+            { "type": "string", "format": "uri" },
+            { "type": "string", "maxLength": 0 }
+          ]
+        },
+        "instagram": {
+          "description": "Full URL to Instagram profile, or empty string to omit",
+          "oneOf": [
+            { "type": "string", "format": "uri" },
+            { "type": "string", "maxLength": 0 }
+          ]
+        },
+        "youtube": {
+          "description": "Full URL to YouTube channel, or empty string to omit",
+          "oneOf": [
+            { "type": "string", "format": "uri" },
+            { "type": "string", "maxLength": 0 }
+          ]
+        }
+      }
+    }
+  }
+}

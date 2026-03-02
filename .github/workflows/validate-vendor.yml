@@ -1,0 +1,77 @@
+name: ✅ Validate Vendor PR
+
+on:
+  pull_request:
+    paths:
+      - "vendors/*.json"
+      - "logos/**"
+
+jobs:
+  validate:
+    name: Validate schema, slug & logo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install validators
+        run: npm install -g ajv-cli ajv-formats
+
+      - name: Validate each vendor JSON
+        run: |
+          ERRORS=0
+
+          for f in vendors/*.json; do
+            # Skip internal files (_schema.json, _example.json, etc.)
+            [[ "$(basename "$f")" == _* ]] && continue
+
+            echo ""
+            echo "━━━ Checking: $f ━━━"
+
+            # 1. JSON schema validation
+            if ! ajv validate -s vendors/_schema.json -d "$f" -c ajv-formats --strict=false; then
+              echo "::error file=$f::Schema validation failed"
+              ERRORS=$((ERRORS + 1))
+              continue
+            fi
+
+            # 2. Slug must match filename
+            slug=$(jq -r '.slug' "$f")
+            expected=$(basename "$f" .json)
+            if [ "$slug" != "$expected" ]; then
+              echo "::error file=$f::Slug '$slug' does not match filename '$expected'"
+              ERRORS=$((ERRORS + 1))
+            fi
+
+            # 3. Logo file must exist
+            logo=$(jq -r '.logo' "$f")
+            if [ ! -f "$logo" ]; then
+              echo "::error file=$f::Logo file not found: $logo"
+              ERRORS=$((ERRORS + 1))
+            else
+              # 4. Logo must be ≤ 200 KB
+              size=$(stat -c%s "$logo" 2>/dev/null || stat -f%z "$logo")
+              if [ "$size" -gt 204800 ]; then
+                echo "::error file=$f::Logo exceeds 200 KB (${size} bytes): $logo"
+                ERRORS=$((ERRORS + 1))
+              else
+                echo "✓ Logo OK (${size} bytes)"
+              fi
+            fi
+
+            echo "✓ $f is valid"
+          done
+
+          if [ "$ERRORS" -gt 0 ]; then
+            echo ""
+            echo "::error::$ERRORS validation error(s) found. Please fix them before merging."
+            exit 1
+          fi
+
+          echo ""
+          echo "✅ All vendor files are valid!"

@@ -1,0 +1,47 @@
+name: 🚩 Report a vendor
+description: Report a listed vendor for counterfeits, fraud, or other issues that affect the community's trust
+title: "[Report] <Vendor Name>"
+labels: ["vendor-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this to report a vendor who's already listed. The team will review and act if the report holds up.
+
+        **Applying as a new vendor? See [VENDOR_GUIDE.md](../VENDOR_GUIDE.md) and open a pull request instead.**
+
+  - type: input
+    id: vendor
+    attributes:
+      label: Which vendor?
+      placeholder: "e.g. Pivotal Mining — https://pivotalmining.com"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: What's the issue?
+      options:
+        - Selling counterfeit or non-genuine Bitaxe hardware
+        - Fraud or scam reports
+        - Shop is no longer active
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Links, screenshots, Discord threads, forum posts — whatever supports this. The more concrete, the better.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirm
+      options:
+        - label: I'm reporting this in good faith, not to knock out a competitor
+          required: true

@@ -1,0 +1,37 @@
+name: 🔄 Sync Vendors → Framer CMS
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "vendors/**"
+      - "logos/**"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Force full sync even without file changes"
+        required: false
+        default: "false"
+        type: boolean
+
+jobs:
+  sync:
+    name: Sync to Framer CMS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Sync vendors to Framer
+        run: node scripts/sync-to-framer.mjs
+        env:
+          FRAMER_PROJECT_URL: ${{ secrets.FRAMER_PROJECT_URL }}
+          FRAMER_API_KEY: ${{ secrets.FRAMER_API_KEY }}

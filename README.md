@@ -1,86 +1,76 @@
-# legitlist
+# ⛏️ legitlist
 
-The community-reviewed list of vendors selling genuine Bitaxe hardware.
+### The community-verified list of trusted Bitaxe vendors.
 
-Listings are managed via pull requests — open, transparent, and on the record. The community discusses, the Bitaxe core team decides.
+Open-source hardware deserves open-source trust. **legitlist** is how the Bitaxe community tracks who's selling genuine hardware — transparently, on the record, and powered by the people who actually use it.
 
-→ **Want to get listed?** Read [VENDOR_GUIDE.md](VENDOR_GUIDE.md) and open a PR.
-
-→ **Want to report a vendor?** [Open an issue](../../issues/new/choose).
+No backroom deals. No paid placements. Just miners vouching for miners.
 
 ---
 
-## How it works
+## 🛒 For Vendors
 
-```
-Vendor opens PR → CI validates files → Community reviews → Team merges or closes → Site updates automatically
-```
+Want to sell Bitaxe and be listed on the official site?
 
-Every vendor is a JSON file in `vendors/`. When a PR merges into `main`, a GitHub Action syncs the data to the Bitaxe website with no manual steps.
+**→ Read the [Vendor Guide](VENDOR_GUIDE.md) and open a Pull Request.**
 
----
-
-## Repo structure
-
-```
-legitlist/
-├── vendors/
-│   ├── _schema.json       # JSON Schema — all vendor files must pass this
-│   ├── _example.json      # Template to copy when adding a vendor
-│   └── {slug}.json        # One file per vendor
-├── logos/
-│   └── {slug}.png         # Square image, max 200 KB
-├── scripts/
-│   ├── sync-to-framer.mjs # Syncs vendors to Framer CMS
-│   └── validate-all.mjs   # Run validation locally
-└── .github/
-    ├── workflows/
-    │   ├── sync-vendors.yml    # Runs on merge to main
-    │   └── validate-vendor.yml # Runs on every PR
-    ├── ISSUE_TEMPLATE/
-    │   └── report-vendor.yml   # For reporting a listed vendor
-    └── pull_request_template.md
-```
+The process is simple: you submit your info, the community reviews it, the core team makes the call. Everything happens in public.
 
 ---
 
-## For maintainers
+## 🔍 For the Community
 
-### First-time setup
+See a vendor that shouldn't be listed? Something off?
 
-Add these two secrets under **Settings → Secrets and variables → Actions**:
+**→ [Report a vendor](../../issues/new/choose)**
 
-| Secret | Where to find it |
+Every report is reviewed. Every removal is transparent.
+
+---
+
+## 🤝 How It Works
+
+```
+Vendor submits PR → Community reviews → Core team merges → Listed on site
+```
+
+That's it. No forms, no emails, no waiting in a queue. Fork the repo, add your files, open a PR. The conversation happens right there.
+
+---
+
+## 📁 Vendor Files
+
+Each vendor is two files:
+
+| File | What |
 |---|---|
-| `FRAMER_PROJECT_URL` | Framer → Project Settings → API |
-| `FRAMER_API_KEY` | Framer → Project Settings → API → Generate Key |
+| `vendors/{slug}.json` | Your shop info — name, website, region, socials |
+| `logos/{slug}.png` | Your logo — square, max 200 KB |
 
-Then trigger the first sync manually: **Actions → Sync Vendors → Framer CMS → Run workflow**. This creates the Managed Collection in Framer.
-
-### Adding or updating a vendor
-
-1. Create `vendors/{slug}.json` — copy from `vendors/_example.json`
-2. Add logo at `logos/{slug}.png` (square, max 200 KB)
-3. Open a PR — CI validates automatically
-4. Merge → sync and deploy run automatically
-
-### Removing a vendor
-
-**Soft remove** — set `"active": false` in the JSON. File stays, vendor disappears from the site.
-**Hard remove** — delete the JSON and logo files.
-
-Both trigger the sync on merge.
-
-### Local development
-
-```bash
-npm install
-npm run validate   # validate all vendor files
-npm run sync       # manual sync (needs .env with FRAMER_PROJECT_URL and FRAMER_API_KEY)
-```
+Check `vendors/_example.json` for the template.
 
 ---
 
-## License
+## 🌍 Regions
 
-MIT
+Vendors are tagged by region so miners can find local sellers:
+
+`North America` · `South America` · `Europe` · `Asia Pacific` · `Middle East & Africa`
+
+---
+
+## 💬 Questions?
+
+Jump into the [OSMU Discord](https://discord.gg/osmu) — we're in the Bitaxe channels.
+
+---
+
+## ⚡ About Bitaxe
+
+Bitaxe is open-source Bitcoin mining hardware designed for solo miners. Built by the community, for the community. Mining doesn't have to be industrial — one miner, one block, one chance.
+
+**[bitaxe.org](https://bitaxe.org)** · **[GitHub](https://github.com/bitaxeorg)** · **[Discord](https://discord.gg/osmu)**
+
+---
+
+<sub>MIT License</sub>
