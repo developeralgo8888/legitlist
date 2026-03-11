@@ -1,0 +1,11 @@
+{
+  "name": "Vendor 5",
+  "slug": "vendor-5",
+  "website": "https://vendor-5.example.com",
+  "region": "Middle East & Africa",
+  "country": "UAE",
+  "logo": "logos/vendor-5.png",
+  "description": "Test vendor 5 — Middle East & Africa.",
+  "active": true,
+  "social": { "x": "", "instagram": "", "youtube": "" }
+}

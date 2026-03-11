@@ -1,0 +1,11 @@
+{
+  "name": "Vendor 4",
+  "slug": "vendor-4",
+  "website": "https://vendor-4.example.com",
+  "region": "South America",
+  "country": "Brazil",
+  "logo": "logos/vendor-4.png",
+  "description": "Test vendor 4 — South America.",
+  "active": true,
+  "social": { "x": "", "instagram": "", "youtube": "" }
+}

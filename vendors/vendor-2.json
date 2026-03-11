@@ -1,0 +1,11 @@
+{
+  "name": "Vendor 2",
+  "slug": "vendor-2",
+  "website": "https://vendor-2.example.com",
+  "region": "Europe",
+  "country": "Germany",
+  "logo": "logos/vendor-2.png",
+  "description": "Test vendor 2 — Europe.",
+  "active": true,
+  "social": { "x": "", "instagram": "", "youtube": "" }
+}

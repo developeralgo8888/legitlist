@@ -1,0 +1,11 @@
+{
+  "name": "Vendor 3",
+  "slug": "vendor-3",
+  "website": "https://vendor-3.example.com",
+  "region": "Asia Pacific",
+  "country": "Australia",
+  "logo": "logos/vendor-3.png",
+  "description": "Test vendor 3 — Asia Pacific.",
+  "active": true,
+  "social": { "x": "", "instagram": "", "youtube": "" }
+}
