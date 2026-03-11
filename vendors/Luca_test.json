@@ -1,0 +1,15 @@
+{
+  "name": "Luca_test",
+  "slug": "Luca_test",
+  "website": "https://yourshop.com",
+  "region": "Europe",
+  "country": "Italy",
+  "logo": "logos/your-shop-name.png",
+  "description": "Tell miners who you are — what you sell, where you ship, how long you've been at it. Keep it under 280 characters.",
+  "active": true,
+  "social": {
+    "x": "https://x.com/yourhandle",
+    "instagram": "",
+    "youtube": ""
+  }
+}
