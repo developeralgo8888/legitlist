@@ -6,7 +6,7 @@ Internal reference for the legitlist core team. Not vendor-facing.
 
 ## 🏗️ How the system works
 
-When a PR merges into `main`, a GitHub Action syncs all active vendor data to the Framer CMS. The site updates automatically — no manual steps needed.
+When a PR merges into `main`, a GitHub Action syncs all vendor data to the Framer CMS. Visibility is controlled by the `active` field, so only active vendors should be shown on the site.
 
 ```
 PR merged → GitHub Action triggers → Vendor data synced to Framer → Site deploys
@@ -70,9 +70,9 @@ This creates the Managed Collection in Framer with all fields. Only needs to be 
 
 ## 🗑️ Removing a vendor
 
-**Soft remove** — set `"active": false` in the JSON. File stays in repo, vendor disappears from the site.
+**Soft remove** — set `"active": false` in the JSON. File stays in repo, vendor remains in Framer CMS, and the site should hide it by filtering for active vendors only.
 
-**Hard remove** — delete the JSON and logo files entirely.
+**Hard remove** — only do this together with manual cleanup in Framer. The sync runs in soft-sync mode and does not delete stale CMS items automatically.
 
 Both trigger the sync on merge. Both are transparent — the change is visible in Git history.
 

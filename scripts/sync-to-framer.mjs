@@ -1,7 +1,7 @@
 /**
  * sync-to-framer.mjs
  *
- * Reads all active vendor JSON files from ./vendors/ and syncs them
+ * Reads all vendor JSON files from ./vendors/ and syncs them
  * to the Framer CMS Managed Collection via the Framer Server API.
  *
  * Required environment variables:
@@ -50,15 +50,16 @@ const NON_RETRIABLE_ERROR_PATTERNS = [
 
 // CMS field schema — edit with care; removing fields will lose CMS data
 const FIELDS = [
-  { id: "vendorName",   type: "string", name: "Vendor Name" },
-  { id: "website",      type: "link",   name: "Website" },
-  { id: "region",       type: "string", name: "Region" },
-  { id: "country",      type: "string", name: "Country" },
-  { id: "logoUrl",      type: "image",  name: "Logo" },
-  { id: "description",  type: "string", name: "Description" },
-  { id: "socialX",      type: "link",   name: "X / Twitter" },
-  { id: "socialIg",     type: "link",   name: "Instagram" },
-  { id: "socialYt",     type: "link",   name: "YouTube" },
+  { id: "vendorName",   type: "string",  name: "Vendor Name" },
+  { id: "website",      type: "link",    name: "Website" },
+  { id: "region",       type: "string",  name: "Region" },
+  { id: "country",      type: "string",  name: "Country" },
+  { id: "active",       type: "boolean", name: "Active" },
+  { id: "logoUrl",      type: "image",   name: "Logo" },
+  { id: "description",  type: "string",  name: "Description" },
+  { id: "socialX",      type: "link",    name: "X / Twitter" },
+  { id: "socialIg",     type: "link",    name: "Instagram" },
+  { id: "socialYt",     type: "link",    name: "YouTube" },
 ]
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -69,18 +70,18 @@ function loadVendors() {
     .readdirSync(vendorsDir)
     .filter((f) => f.endsWith(".json") && !f.startsWith("_")) // skip _schema.json, _example.json, etc.
 
-  const vendors = files
-    .map((f) => {
-      const raw = fs.readFileSync(path.join(vendorsDir, f), "utf-8")
-      return JSON.parse(raw)
-    })
-    .filter((v) => v.active === true)
+  const vendors = files.map((f) => {
+    const raw = fs.readFileSync(path.join(vendorsDir, f), "utf-8")
+    return JSON.parse(raw)
+  })
 
-  console.log(`📦 Loaded ${vendors.length} active vendor(s) from ${files.length} total file(s)`)
+  const activeCount = vendors.filter((v) => v.active === true).length
+  console.log(`📦 Loaded ${vendors.length} vendor(s) from ${files.length} total file(s) — ${activeCount} active`)
   return vendors
 }
 
 // FieldDataEntryInput helpers — each field must be a typed object, not a plain value
+const bool = (value)        => ({ type: "boolean", value: Boolean(value) })
 const str  = (value)        => ({ type: "string", value: value ?? "" })
 const link = (value)        => ({ type: "link",   value: value || null })
 const img  = (value)        => ({ type: "image",  value: value || null })
@@ -138,6 +139,7 @@ function vendorToItem(v) {
       website:     link(v.website),
       region:      str(v.region),
       country:     str(v.country),
+      active:      bool(v.active),
       logoUrl:     img(`${LOGO_BASE}logos/${v.logo}`),
       description: str(v.description),
       socialX:     link(v.social?.x),
@@ -184,18 +186,9 @@ async function main() {
     // ── Sync field schema ──────────────────────────────────────────────────
     console.log("🔧 Syncing field schema…")
     await collection.setFields(FIELDS)
-    const newSlugs   = new Set(vendors.map((v) => v.slug))
-    const existingIds = await collection.getItemIds()
-    const toRemove   = existingIds.filter((id) => !newSlugs.has(id))
+    console.log("ℹ️  Soft sync mode — stale items are not deleted automatically")
 
-    if (toRemove.length > 0) {
-      console.log(`🗑  Removing ${toRemove.length} stale item(s): ${toRemove.join(", ")}`)
-      await collection.removeItems(toRemove)
-    } else {
-      console.log("✔  No stale items to remove")
-    }
-
-    // ── Upsert active vendors ─────────────────────────────────────────────
+    // ── Upsert all vendors (visibility controlled by active) ──────────────
     const items = vendors.map(vendorToItem)
     console.log(`📤 Upserting ${items.length} vendor(s)…`)
     await collection.addItems(items) // addItems performs an upsert by id
