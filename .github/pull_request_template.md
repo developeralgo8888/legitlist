@@ -18,7 +18,7 @@ _Replace the example values below with your real details._
 | **Shop name** | Your shop name |
 | **Website** | https://yourshop.com |
 | **Region** | Your region |
-| **Where to find you in the community** | Your X, Discord, Instagram, or other public link |
+| **Where to find you in the community** | Your X, Discord, Instagram, TikTok, Nostr, or other public link (PR context only; JSON `social` supports only `x`, `instagram`, `youtube`, `tiktok`, `nostr`) |
 
 ---
 

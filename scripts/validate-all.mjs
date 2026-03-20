@@ -33,8 +33,8 @@ for (const file of allVendorEntries) {
     continue
   }
 
-  if (!/^[a-zA-Z0-9_-]+\.json$/.test(file)) {
-    console.error(`❌ ${file} — Invalid vendor filename. Use only letters, numbers, hyphens, or underscores`) // no spaces or extra dots
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*\.json$/.test(file)) {
+    console.error(`❌ ${file} — Invalid vendor filename. Use lowercase letters, numbers, and hyphens only`) // no spaces, underscores, uppercase, or extra dots
     errors++
   }
 }

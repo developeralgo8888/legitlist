@@ -46,7 +46,8 @@ Before you begin, make sure you have:
 - your website URL
 - your region and country
 - your logo file
-- at least one place where the community can find you (for example X, Discord, or Instagram)
+- at least one place where the community can find you (for example X, Discord, Instagram, TikTok, or Nostr)
+  (community contact links can be shared in PR text; JSON `social` keys are only `x`, `instagram`, `youtube`, `tiktok`, `nostr`)
 
 For your logo:
 - use a square image
@@ -88,6 +89,11 @@ Example:
 
 Choose one short name for your shop, like `pivotal-mining`. Use that same name for your shop file, the `slug` field, and your logo file.
 
+Slug format is strict: lowercase letters and numbers, separated by single hyphens only.
+
+Valid: `my-shop`, `shop2`, `my-shop-2`
+Invalid: `my--shop`, `-shop`, `shop-`, `my_shop`, `My-Shop`
+
 Paste this example, then replace the sample details with your own shop details:
 
 ```json
@@ -103,7 +109,9 @@ Paste this example, then replace the sample details with your own shop details:
   "social": {
     "x": "https://x.com/yourhandle",
     "instagram": "",
-    "youtube": ""
+    "youtube": "",
+    "tiktok": "",
+    "nostr": ""
   }
 }
 ```
@@ -111,7 +119,11 @@ Paste this example, then replace the sample details with your own shop details:
 A few notes:
 - `description` is optional, but recommended
 - leave `active` as `true`
-- for website and social links, use full HTTPS URLs or leave social fields empty: `""`
+- `website` must be a full HTTPS URL (starting with `https://`) and cannot be empty
+- social fields may be full HTTPS URLs or empty strings: `""`
+- social fields supported by schema: `x`, `instagram`, `youtube`, `tiktok`, `nostr`
+- only these social keys are allowed in JSON (do not add custom keys like `discord`)
+- for `nostr`, use an HTTPS profile page URL (not a raw `npub...` or `nostr:` identifier)
 
 Valid regions:
 `Europe` · `North America` · `South America` · `Asia Pacific` · `Middle East` · `Africa` · `India`
@@ -168,7 +180,7 @@ Then click **Create pull request**.
 
 If your PR is closed, you can fix the issues and open a new one.
 
-These are maintainer and community review checks, not automated CI checks.
+Maintainer/community trust checks are manual. File format and schema checks run automatically in CI.
 
 ---
 
@@ -177,7 +189,7 @@ These are maintainer and community review checks, not automated CI checks.
 If your PR check fails, use this checklist:
 
 - **Invalid vendor filename**
-  Your file must be in `vendors/` and end with `.json`
+  Your file must be in `vendors/`, end with `.json`, and use lowercase letters and numbers separated by single hyphens only
   Example: `your-shop-name.json`
 
 - **Slug does not match filename**

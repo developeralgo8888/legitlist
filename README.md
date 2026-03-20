@@ -33,7 +33,7 @@ Every report is reviewed. Every removal is transparent.
 ## 🤝 How It Works
 
 ```
-Vendor submits PR → Community reviews → Core team merges → Listed on site
+Vendor submits PR → Community reviews → Maintainers merge → Listed on site
 ```
 
 That's it. No forms, no emails, no waiting in a queue. Fork the repo, add your files, open a PR. The conversation happens right there.
@@ -52,6 +52,8 @@ Each vendor is two files:
 | `logos/{slug}.{ext}` | Your logo — square 400×400px recommended, max 200 KB (png, jpg, webp) |
 
 For the easiest step-by-step path, follow the [Vendor Guide](VENDOR_GUIDE.md). `vendors/_example.json` is the raw template.
+
+Supported social fields: `x`, `instagram`, `youtube`, `tiktok`, `nostr`.
 
 ---
 

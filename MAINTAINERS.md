@@ -61,10 +61,11 @@ This creates the Managed Collection in Framer with all fields. Only needs to be 
 
 ## ➕ Adding or updating a vendor
 
-1. Create `vendors/{slug}.json` — copy from `vendors/_example.json`
+1. Create `vendors/{slug}.json` — copy from `vendors/_example.json` (`slug` uses lowercase letters, numbers, and hyphens only)
 2. Add logo at `logos/{slug}.{ext}` (square 400×400px recommended, max 200 KB — png, jpg, webp)
-3. Open a PR — CI validates automatically
-4. Merge → sync and deploy run automatically
+3. Social keys supported by schema: `x`, `instagram`, `youtube`, `tiktok`, `nostr`
+4. Open a PR — CI validates automatically
+5. Merge → sync and deploy run automatically
 
 ---
 
