@@ -42,8 +42,8 @@ jobs:
               continue
             fi
 
-            if [[ ! "$base" =~ ^[A-Za-z0-9_-]+\.json$ ]]; then
-              echo "::error file=$f::Invalid vendor filename. Use only letters, numbers, hyphens, or underscores"
+            if [[ ! "$base" =~ ^[a-z0-9]+(-[a-z0-9]+)*\.json$ ]]; then
+              echo "::error file=$f::Invalid vendor filename. Use lowercase letters, numbers, and single hyphens only"
               ERRORS=$((ERRORS + 1))
             fi
           done

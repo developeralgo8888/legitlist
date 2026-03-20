@@ -42,6 +42,8 @@ const FIELDS = [
   { id: "socialX",      type: "link",    name: "X / Twitter" },
   { id: "socialIg",     type: "link",    name: "Instagram" },
   { id: "socialYt",     type: "link",    name: "YouTube" },
+  { id: "socialTt",     type: "link",    name: "TikTok" },
+  { id: "socialNostr",  type: "link",    name: "Nostr" },
 ]
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -112,6 +114,8 @@ function vendorToItem(v) {
       socialX:     link(v.social?.x),
       socialIg:    link(v.social?.instagram),
       socialYt:    link(v.social?.youtube),
+      socialTt:    link(v.social?.tiktok),
+      socialNostr: link(v.social?.nostr),
     },
   }
 }

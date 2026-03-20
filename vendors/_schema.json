@@ -21,8 +21,8 @@
     },
     "slug": {
       "type": "string",
-      "pattern": "^[a-zA-Z0-9_-]+$",
-      "description": "URL-safe identifier, must match filename \u2014 letters, numbers, hyphens, underscores (e.g. \"pivotal-mining\" or \"pivotal_mining\")"
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-safe identifier, must match filename \u2014 lowercase letters, numbers, and hyphens only (e.g. \"pivotal-mining\")"
     },
     "website": {
       "type": "string",
@@ -51,8 +51,8 @@
     },
     "logo": {
       "type": "string",
-      "pattern": "^[a-zA-Z0-9_-]+\\.([Pp][Nn][Gg]|[Jj][Pp][Gg]|[Ww][Ee][Bb][Pp])$",
-      "description": "Logo filename only (e.g. 'pivotal-mining.png') \u2014 stored in the 'logos/' folder, PNG/JPG/WebP, square 400\u00d7400px recommended"
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*\\.(png|jpg|webp)$",
+      "description": "Logo filename only (e.g. 'pivotal-mining.png') \u2014 stored in the 'logos/' folder, png/jpg/webp, square 400\u00d7400px recommended"
     },
     "description": {
       "type": "string",
@@ -97,6 +97,34 @@
         },
         "youtube": {
           "description": "Full HTTPS URL to YouTube channel, or empty string to omit",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https://"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "tiktok": {
+          "description": "Full HTTPS URL to TikTok profile, or empty string to omit",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https://"
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "nostr": {
+          "description": "Full HTTPS URL to Nostr profile page, or empty string to omit",
           "oneOf": [
             {
               "type": "string",
