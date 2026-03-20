@@ -21,6 +21,23 @@ New to the community? That's fine — but expect the review to take longer while
 
 ---
 
+## Approval requirements
+
+Final inclusion in the legitlist is up to the maintainers.
+
+Your chances of approval are much better if all of the following are true:
+
+- You use the correct name: `Bitaxe`, not `BitAxe`
+- Your product pages use real photos of the products you sell
+- Your Bitaxe product pages link to `https://bitaxe.org`
+- You do not sell Bitaxe-derived products that violate the open-source license
+
+Selling closed-source miners is fine as long as they are not Bitaxe derivatives in violation of the license.
+
+If you're unsure whether a product line is acceptable, ask the maintainers before submitting.
+
+---
+
 ## 🧰 What you need before you start
 
 Before you begin, make sure you have:

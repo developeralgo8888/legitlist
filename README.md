@@ -14,6 +14,8 @@ Mining got centralized. Bitaxe helps bring it back to individuals — but only i
 
 The legitlist is not a pay-to-play directory. It’s a public trust signal: community-reviewed, core-team approved.
 
+Final inclusion is always at maintainer discretion and based on community trust, listing quality, and alignment with the Bitaxe open-source ecosystem.
+
 **→ Read the [Vendor Guide](VENDOR_GUIDE.md) and open your PR.**
 
 ---
