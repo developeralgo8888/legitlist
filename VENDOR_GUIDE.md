@@ -4,7 +4,7 @@
 
 Mining got centralized. Bitaxe is one piece of bringing it back to individuals. For that to work, the hardware needs to be genuine — and the people selling it need to be accountable.
 
-This list isn't a barrier. It's a signal. A vendor on this list has been reviewed by the community and cleared by the core team. That means something to miners making a purchase decision.
+This list isn't a barrier. It's a signal. A vendor on this list has been reviewed by the community and cleared by the maintainers. That means something to miners making a purchase decision.
 
 ---
 
@@ -21,18 +21,18 @@ New to the community? That's fine — but expect the review to take longer while
 
 ---
 
-## Approval requirements
+## Approval review criteria
 
 Final inclusion in the legitlist is up to the maintainers.
 
-Your chances of approval are much better if all of the following are true:
+These criteria are reviewed manually by maintainers. Meeting them improves approval likelihood but does not guarantee inclusion.
 
 - You use the correct name: `Bitaxe`, not `BitAxe`
 - Your product pages use real photos of the products you sell
 - Your Bitaxe product pages link to `https://bitaxe.org`
-- You do not sell Bitaxe-derived products that violate the open-source license
+- You do not sell Bitaxe-derived products in ways that violate Bitaxe open-source license terms
 
-Selling closed-source miners is fine as long as they are not Bitaxe derivatives in violation of the license.
+Selling closed-source miners is fine as long as they are not Bitaxe derivatives sold in violation of Bitaxe open-source license terms.
 
 If you're unsure whether a product line is acceptable, ask the maintainers before submitting.
 
@@ -164,9 +164,11 @@ Then click **Create pull request**.
 
 1. We check that your files are valid
 2. The community can review and comment
-3. The core team decides whether to merge your listing
+3. The maintainers decide whether to merge your listing
 
 If your PR is closed, you can fix the issues and open a new one.
+
+These are maintainer and community review checks, not automated CI checks.
 
 ---
 
