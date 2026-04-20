@@ -1,0 +1,16 @@
+{
+  "name": "Power Mining",
+  "slug": "power-mining",
+  "website": "https://shop.powermining.io",
+  "region": "Europe",
+  "country": "Latvia",
+  "description": "Manufacturer of open-source Bitcoin miners — Bitaxe Gamma, NerdQaxe++, NerdOctaxe Gamma. EU and US stock for fast delivery. 20'000 units shipped.",
+  "active": true,
+  "social": {
+    "x": "https://x.com/powerminingfarm",
+    "instagram": "https://www.instagram.com/power_mining/",
+    "youtube": "https://www.youtube.com/c/powermining",
+    "tiktok": "https://www.tiktok.com/@power_mining",
+    "nostr": ""
+  }
+}
