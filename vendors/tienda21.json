@@ -1,0 +1,14 @@
+{
+    "name": "Tienda21",
+    "slug": "tienda21",
+    "website": "https://tienda21.com",
+    "region": "South America",
+    "country": "Argentina",
+    "description": "Tienda argentina de hardware bitcoin y Bitaxe genuino.",
+    "active": true,
+    "social": {
+      "x": "https://x.com/TiendaXXI",
+      "instagram": "https://www.instagram.com/_tienda21_/",
+      "nostr": "https://primal.net/p/npub190e5jn2ut7pll9xugnpdy27748ensu5x5yn5qlppunc8tyrw650q6r6udz"
+    }
+  }
