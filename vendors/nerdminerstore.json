@@ -1,0 +1,16 @@
+{
+  "name": "Nerdminer Store",
+  "slug": "nerdminerstore",
+  "website": "https://nerdminerstore.com",
+  "region": "Europe",
+  "country": "Spain",
+  "description": "Nerdminerstore was one of the first stores in Europe selling open source mining devices like Nerdminer and Bitaxe with world wide shipping",
+  "active": true,
+  "social": {
+    "x": "https://x.com/nerdminerstore",
+    "instagram": "",
+    "youtube": "",
+    "tiktok": "",
+    "nostr": ""
+  }
+}
