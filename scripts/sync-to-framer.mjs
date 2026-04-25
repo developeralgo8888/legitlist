@@ -210,8 +210,7 @@ async function main() {
       changedPaths.modified.length
 
     if (changedCount === 0) {
-      console.log("ℹ️  No changed paths since last publish — skipping publish/deploy")
-      return
+      console.log("ℹ️  No changed paths reported, but continuing publish/deploy to ensure CMS updates are live")
     }
 
     console.log(
